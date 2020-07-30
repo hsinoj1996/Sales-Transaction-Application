@@ -8,4 +8,7 @@ router.post("/api/register", customerConfig.customerRegister)
 router.get("/api/view", customerConfig.customerView);
 router.put("/api/edit/:id", customerConfig.customerEdit)
 
+//login api
+router.post("/api/login", customerConfig.customerLogin);
+
 module.exports = router;

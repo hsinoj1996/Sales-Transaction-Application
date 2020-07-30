@@ -88,3 +88,30 @@ module.exports.customerEdit = (req,res) =>{
         error
     })
 }
+
+//Login Method
+module.exports.customerLogin = (req,res) =>{
+    const Email = req.body.Email;
+    const Password = req.body.Password
+
+    console.log(Email);
+
+    User.findOne({Email}).then((isLoggedIn) =>{
+        bcrypt.compare(Password, isLoggedIn.Password).then((isMatched) =>{
+            if(isMatched){
+                res.status(201).json({
+                    success: true,
+                    message: "Login Successfully",
+                })
+            }else{
+                res.json({
+                    success:"false",
+                    message:"Your email or password does not match"
+                })
+            }
+        })
+    }).catch((error)=>{
+        message:"internal login error",
+        error
+    })
+}
