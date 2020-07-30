@@ -2,7 +2,9 @@ const express = require("express")
 const mongoose = require("mongoose")
 const User = require("../model/Customer")
 
-//Post Method
+const bcrypt = require("bcryptjs")
+
+//POST Method
 module.exports.customerRegister = (req,res) => {
     
     const register = new User({
@@ -12,22 +14,34 @@ module.exports.customerRegister = (req,res) => {
         Confirm_Password: req.body.Confirm_Password,
         Gender: req.body.Gender,
         Email: req.body.Email
-    }).save()
-    .then((savedCustomer)=>{
-        if(savedCustomer){
-            res.status(201).json({
-                success: true,
-                message: "Account Successfully Created!!!",
-                savedCustomer
-            })
-        }else{
-            res.status(406).json({
-                message:"Cannot Created"
-            })
-        }
-    }).catch((error)=>{
-        message:"internal error",
-        error
+    });
+    bcrypt.genSalt(10, (error, salt) =>{
+        bcrypt.hash(register.Password, salt, (err, hash) => {
+            if(err){
+                res.json({
+                    err
+                })
+            }else{
+                register.Password = hash;
+                register.save()
+                .then((savedCustomer)=>{
+                    if(savedCustomer){
+                        res.status(201).json({
+                            success: true,
+                            message: "Account Successfully Created!!!",
+                            savedCustomer
+                        })
+                    }else{
+                        res.status(406).json({
+                            message:"Cannot Created"
+                        })
+                    }
+                }).catch((error)=>{
+                    message:"internal error",
+                    error
+                })
+            }
+        })
     })
 }
 
