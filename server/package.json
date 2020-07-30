@@ -1,0 +1,24 @@
+{
+  "name": "salestransaction",
+  "version": "1.0.0",
+  "description": "This project is to develop the sales transaction between customer and user",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hsinoj1996/Sales-Transaction-Application.git"
+  },
+  "keywords": [
+    "JWT",
+    "Session",
+    "CRUD"
+  ],
+  "author": "Jonish Prajapati",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hsinoj1996/Sales-Transaction-Application/issues"
+  },
+  "homepage": "https://github.com/hsinoj1996/Sales-Transaction-Application#readme"
+}
