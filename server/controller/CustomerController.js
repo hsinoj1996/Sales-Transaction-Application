@@ -3,6 +3,8 @@ const mongoose = require("mongoose")
 const User = require("../model/Customer")
 
 const bcrypt = require("bcryptjs")
+const keys = require("../configuration/keys")
+const jwt = require("jsonwebtoken");
 
 //POST Method
 module.exports.customerRegister = (req,res) => {
@@ -94,15 +96,27 @@ module.exports.customerLogin = (req,res) =>{
     const Email = req.body.Email;
     const Password = req.body.Password
 
-    console.log(Email);
-
     User.findOne({Email}).then((isLoggedIn) =>{
         bcrypt.compare(Password, isLoggedIn.Password).then((isMatched) =>{
             if(isMatched){
-                res.status(201).json({
-                    success: true,
-                    message: "Login Successfully",
-                })
+
+                const payload = {
+                    id:isLoggedIn.id,
+                    Email: isLoggedIn.Email
+                }
+                jwt.sign(
+                    payload,
+                    keys.secretOrKey,
+                    {expiresIn:36000},
+                    (err,token) =>{
+                        res.status(201).json({
+                            success: true,
+                            message: "Login Successfully",
+                            token: "Bearer " + token,
+                        })
+                    }
+                )
+               
             }else{
                 res.json({
                     success:"false",
