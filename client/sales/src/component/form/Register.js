@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import PropTypes from "prop-types"
+import { connect} from 'react-redux'
+import { addCustomer } from '../../action/postAction'
 
 class Register extends Component {
 
@@ -7,15 +10,17 @@ class Register extends Component {
         this.state = {
                     Firstname:"",
                     Lastname:"",
-                    email:"",
-                    password:"",
-                    confirm_password:"",
+                    Email:"",
+                    Password:"",
+                    Confirm_password:"",
 
         }
             this.formChange = this.formChange.bind(this)
             this.onSubmit = this.onSubmit.bind(this)
    
     }
+
+
     formChange(event){
         const {name, value} = event.target
         this.setState({
@@ -25,23 +30,30 @@ class Register extends Component {
     onSubmit(event){
         event.preventDefault();
         const data = {
-            firstname: this.state.firstname,
-            lastname:this.state.lastname,
-            email: this.state.email
+            Firstname: this.state.Firstname,
+            Lastname:this.state.Lastname,
+            Email: this.state.Email,
+            Password:this.state.Password,
+            Confirm_password: this.state.Confirm_password
         }
         console.log(data);
-        
+        this.props.addCustomer(data)
+     
+      console.log("Data inserted")
     }
 
     render() {
+
+    
+
         return (
             <div className="register">
             <div className="container">
               <div className="row">
                 <div className="col-md-8 m-auto">
-                  <h1 className="display-4 text-center">Sign Up</h1>
+                  <h1 className="display-4 text-center"> Add Customer</h1>
                   <p className="lead text-center">
-                    Create Your Account
+                   
                   </p>
                   <form noValidate onSubmit={this.onSubmit}>
 
@@ -50,8 +62,8 @@ class Register extends Component {
                         type="text"
                         className={('form-control form-control-lg')}
                         placeholder="Firstname"
-                        name="firstname"
-                        value={this.state.firstname}
+                        name="Firstname"
+                        value={this.state.Firstname}
                         onChange={this.formChange}
                       />
                       
@@ -61,8 +73,8 @@ class Register extends Component {
                         type="text"
                         className={('form-control form-control-lg')}
                         placeholder="Lastname"
-                        name="lastname"
-                        value={this.state.lastname}
+                        name="Lastname"
+                        value={this.state.Lastname}
                         onChange={this.formChange}
                       />
                       
@@ -73,8 +85,8 @@ class Register extends Component {
                         type="email"
                         className={('form-control form-control-lg')}
                         placeholder="Email Address"
-                        name="email"
-                        value={this.state.email}
+                        name="Email"
+                        value={this.state.Email}
                         onChange={this.formChange}
                       />
                       
@@ -84,8 +96,8 @@ class Register extends Component {
                         type="password"
                         className={('form-control form-control-lg')}
                         placeholder="Password"
-                        name="password"
-                        value={this.state.password}
+                        name="Password"
+                        value={this.state.Password}
                         onChange={this.formChange}
                       />
                 
@@ -95,14 +107,14 @@ class Register extends Component {
                         type="password"
                         className={('form-control form-control-lg')}
                         placeholder="Confirm Password"
-                        name="confirm_password"
-                        value={this.state.confirm_password}
+                        name="Confirm_password"
+                        value={this.state.Confirm_password}
                         onChange={this.formChange}
                       />
                     </div>
                     
 
-                    <input type="submit" className="btn btn-info btn-block mt-4" />
+                    <input type="submit" className="btn btn-info btn-block mt-4" value="Add Customer"/>
                   </form>
                 </div>
               </div>
@@ -111,4 +123,14 @@ class Register extends Component {
         )
     }
 }
-export default Register
+
+Register.propTypes = {
+  registerCustomer: PropTypes.func.isRequired,
+  posts: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+  posts: state.posts
+})
+
+export default connect(mapStateToProps, {addCustomer}) (Register)

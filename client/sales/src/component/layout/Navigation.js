@@ -28,16 +28,15 @@ class Navigation extends Component {
                 </ul>
     
                 <ul className="navbar-nav ml-auto">
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/api/register">
-                      Sign Up
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/api/login">
-                      Login
-                    </Link>
-                  </li>
+                  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Customer
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <Link className="dropdown-item" to="/api/register">Add</Link>
+          <Link className="dropdown-item" to="/api/edit/:id">Edit</Link>
+        </div>
+      </li>
                 </ul>
               </div>
             </div>

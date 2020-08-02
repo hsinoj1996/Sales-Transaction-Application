@@ -5,10 +5,13 @@ import Main from "./component/layout/Main"
 import Footer from "./component/layout/Footer"
 import Register from "./component/form/Register"
 import Login from "./component/form/Login"
+import store from "./store/store"
+import { Provider } from "react-redux"
 
 function App() {
   return (
-    <Router>
+    <Provider store = { store }>
+         <Router>
       <div className="App">
       <header className="App-header">
        <Navigation/>
@@ -19,6 +22,8 @@ function App() {
       </header>
     </div>
     </Router>
+    </Provider>
+   
   );
 }
 
