@@ -14,3 +14,27 @@ export const addCustomer = customerData => dispatch =>{
             })
         })
 }
+
+//Get Customer
+
+export const getCustomer = () => dispatch =>{
+    console.log("customerView");
+    axios
+        .get('/api/view')
+        .then(customerView =>{
+            if(customerView){
+                dispatch({
+                    type: Get_Customer,
+                    payload: customerView.data
+                })
+                console.log("action dispatcher",customerView);
+
+            }else{
+                console.log("failed to fetch balue");
+            }
+
+          }
+            
+            )
+        
+}

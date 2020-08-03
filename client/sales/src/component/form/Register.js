@@ -12,7 +12,7 @@ class Register extends Component {
                     Lastname:"",
                     Email:"",
                     Password:"",
-                    Confirm_password:"",
+                    Confirm_Password:"",
 
         }
             this.formChange = this.formChange.bind(this)
@@ -34,7 +34,7 @@ class Register extends Component {
             Lastname:this.state.Lastname,
             Email: this.state.Email,
             Password:this.state.Password,
-            Confirm_password: this.state.Confirm_password
+            Confirm_Password: this.state.Confirm_Password
         }
         console.log(data);
         this.props.addCustomer(data)
@@ -107,8 +107,8 @@ class Register extends Component {
                         type="password"
                         className={('form-control form-control-lg')}
                         placeholder="Confirm Password"
-                        name="Confirm_password"
-                        value={this.state.Confirm_password}
+                        name="Confirm_Password"
+                        value={this.state.Confirm_Password}
                         onChange={this.formChange}
                       />
                     </div>
@@ -130,7 +130,7 @@ Register.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  posts: state.posts
+  posts: state.posts.value
 })
 
 export default connect(mapStateToProps, {addCustomer}) (Register)
