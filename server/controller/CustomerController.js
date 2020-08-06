@@ -7,6 +7,7 @@ const keys = require("../configuration/keys")
 const jwt = require("jsonwebtoken");
 
 const customerValidation = require("../validation/registerValidation")
+const Customer = require("../model/Customer")
 
 //POST Method
 module.exports.customerRegister = (req,res) => {
@@ -143,4 +144,44 @@ module.exports.customerLogin = (req,res) =>{
         message:"internal login error",
         error
     })
+}
+
+//DELETE Method
+module.exports.customerDelete = (req,res) => {
+    Customer.findByIdAndDelete(req.params.id)
+             .then((delCust) =>{
+                 if(delCust){
+                    res.json("Customer has been Removed")
+
+                 }else{
+                     return res.json("Couldn't be Removed")
+                 }
+             }).catch((error) => {
+                 message:"internal delete error",
+                 error
+             })
+}
+
+//Get Customer By ID
+module.exports.getCustomerById = (req,res) =>{
+    Customer.findById({_id: req.params.id})
+             .then((requestedCustomer) => {
+                 if(requestedCustomer){
+                     res.send({
+                         success: true,
+                         message:"Successfully Found",
+                         requestedCustomer
+                     })
+                 }else{
+                     res.status(204).json({
+                         success: false,
+                         message:"no content"
+                     })
+                 }
+             }).catch((error) =>{
+                 res.json({
+                     message:"internal customer search error",
+                     error
+                 })
+             })
 }

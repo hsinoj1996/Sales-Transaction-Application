@@ -96,7 +96,7 @@ module.exports.getProductById = (req,res) => {
     Product.findById({_id: req.params.id})
             .then((requestedProduct) =>{
                 if(requestedProduct){
-                    res.status(302).send({
+                    res.send({
                         success: true,
                         message:"Successfully Found",
                         requestedProduct

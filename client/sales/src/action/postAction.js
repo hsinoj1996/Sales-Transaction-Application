@@ -1,4 +1,4 @@
-import { Add_Customer, Get_Customer} from "./types";
+import { Add_Customer, Get_Customer, Edit_Customer} from "./types";
 import axios from "axios";
 
 
@@ -37,4 +37,19 @@ export const getCustomer = () => dispatch =>{
             
             )
         
+}
+
+//Edit Customer
+export const editCustomer = (id) => dispatch =>{
+
+    axios
+        .get(`/api/edit/${id}`)
+        .then((editCustomer) =>{
+            if(editCustomer){
+                dispatch({
+                    type: Edit_Customer,
+                    payload: editCustomer
+                })
+            }
+        })
 }

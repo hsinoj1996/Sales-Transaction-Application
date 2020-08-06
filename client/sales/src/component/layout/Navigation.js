@@ -34,7 +34,6 @@ class Navigation extends Component {
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <Link className="dropdown-item" to="/api/register">Add</Link>
-          <Link className="dropdown-item" to="/api/edit/:id">Edit</Link>
           <Link className="dropdown-item" to="/api/view">View</Link>
         </div>
       </li>

@@ -7,7 +7,8 @@ const customerConfig = require("../controller/CustomerController");
 router.post("/api/register", customerConfig.customerRegister)
 router.get("/api/view", customerConfig.customerView);
 router.put("/api/edit/:id", customerConfig.customerEdit)
-
+router.delete("/api/customer/delete/:id", customerConfig.customerDelete)
+router.get("/api/customer/:id", customerConfig.getCustomerById);
 //login api
 router.post("/api/login", customerConfig.customerLogin);
 
