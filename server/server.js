@@ -14,6 +14,7 @@ const port = process.env.PORT || 5000;
 
 //importing router thereby middleware can implement it
 const customer = require("../server/router/CustomerAPI")
+const product = require("../server/router/ProductAPI")
 
 app.get("/",(req,res)=>{
     res.send("hello server");
@@ -27,3 +28,4 @@ app.listen(port,()=>{
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(customer)
+app.use(product);

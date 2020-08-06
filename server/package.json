@@ -4,8 +4,10 @@
   "description": "This project is to develop the sales transaction between customer and user",
   "main": "server.js",
   "scripts": {
+
     "start": "node server.js",
     "server": "nodemon server.js"
+
   },
   "repository": {
     "type": "git",

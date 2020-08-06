@@ -28,7 +28,6 @@ module.exports.customerRegister = (req,res) => {
                 Lastname: req.body.Lastname,
                 Password: req.body.Password,
                 Confirm_Password: req.body.Confirm_Password,
-                Gender: req.body.Gender,
                 Email: req.body.Email
             });
             bcrypt.genSalt(10, (error, salt) =>{
@@ -68,9 +67,7 @@ module.exports.customerView = (req,res) =>{
     User.find() 
      .then((view)=>{
          if(view){
-             res.status(302).send({
-                 view
-             })
+            res.send(view)
          }
      })
 }

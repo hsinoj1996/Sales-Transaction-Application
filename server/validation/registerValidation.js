@@ -8,7 +8,6 @@ const errorValid = customerData =>{
     customerData.Lastname = !isEmpty(customerData.Lastname) ? customerData.Lastname:"";
     customerData.Password = !isEmpty(customerData.Password) ? customerData.Password:"";
     customerData.Confirm_Password = !isEmpty(customerData.Confirm_Password) ? customerData.Confirm_Password:"";
-    customerData.Gender = !isEmpty(customerData.Gender) ? customerData.Gender:"";
     customerData.Email = !isEmpty(customerData.Email) ? customerData.Email:"";
 
     if(Validator.isEmpty(customerData.Firstname)){
@@ -29,9 +28,6 @@ const errorValid = customerData =>{
         errors.message = "Password donot matches"
     }
 
-    if(Validator.isEmpty(customerData.Gender )){
-        errors.Gender = "Gender is required";
-    }
 
     if(Validator.isEmpty(customerData.Email )){
         errors.Email = "Email is required";
