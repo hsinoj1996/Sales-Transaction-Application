@@ -33,8 +33,8 @@ class Register extends Component {
             Firstname: this.state.Firstname,
             Lastname:this.state.Lastname,
             Email: this.state.Email,
-            Password:this.state.Password,
-            Confirm_Password: this.state.Confirm_Password
+            Address:this.state.Address,
+            Gender: this.state.Gender
         }
         console.log(data);
         this.props.addCustomer(data)
@@ -93,24 +93,23 @@ class Register extends Component {
                     </div>
                     <div className="form-group">
                       <input
-                        type="password"
+                        type="text"
                         className={('form-control form-control-lg')}
-                        placeholder="Password"
+                        placeholder="Address"
                         name="Password"
-                        value={this.state.Password}
+                        value={this.state.Address}
                         onChange={this.formChange}
                       />
                 
                     </div>
                     <div className="form-group">
-                      <input
-                        type="password"
-                        className={('form-control form-control-lg')}
-                        placeholder="Confirm Password"
-                        name="Confirm_Password"
-                        value={this.state.Confirm_Password}
-                        onChange={this.formChange}
-                      />
+                      <select name ="Gender"
+                              className={('form-control form-control-lg')}
+                              
+                              onChange={this.formChange}>
+                      <option value="this.state.Gender">Male</option>
+                      <option value="this.state.Gender">Female</option>
+                      </select>     
                     </div>
                     
 

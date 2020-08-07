@@ -7,6 +7,8 @@ import Register from "./component/form/Register"
 import Login from "./component/form/Login"
 import View from "./component/form/ViewCustomer"
 import Edit from "./component/form/EditCustomer"
+import ProductRegister from "./component/form/product/ProductRegister"
+import ViewProduct from "./component/form/product/ViewProduct"
 import store from "./store/store"
 import { Provider } from "react-redux"
 
@@ -22,6 +24,9 @@ function App() {
        <Route exact path ="/api/login" component={Login}/>
        <Route exact path ="/api/view" component={View}/>
        <Route exact path ="/api/edit/:id" component={Edit}/>
+
+       <Route exact path = "/api/product/add" component={ProductRegister}/>
+       <Route exact path = "/api/product/view" component={ViewProduct}/>
        <Footer/>
       </header>
     </div>
