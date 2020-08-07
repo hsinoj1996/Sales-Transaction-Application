@@ -23,7 +23,7 @@ class ProductRegister extends Component {
     }
 
 
- 
+
     formChange(event){
         const {name, value} = event.target
         this.setState({
@@ -38,7 +38,7 @@ class ProductRegister extends Component {
             Description: this.state.Description,
            
         }
-        console.log(data);
+       
         this.props.addProduct(data)
      
       console.log("Data inserted")
@@ -93,10 +93,16 @@ class ProductRegister extends Component {
                       />
                       
                     </div>
-                  
+
+                    <div className="form-group">
                     
+                    <input type="submit" 
+                                className="btn btn-info btn-block mt-4" 
+                                value="Add Product"
+                              />
                     
-                   <input type="submit" className="btn btn-info btn-block mt-4" value="Add Product"/>
+                    </div>
+                   
                   </form>
                 </div>
               </div>
