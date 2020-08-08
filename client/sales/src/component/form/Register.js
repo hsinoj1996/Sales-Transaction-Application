@@ -11,8 +11,8 @@ class Register extends Component {
                     Firstname:"",
                     Lastname:"",
                     Email:"",
-                    Password:"",
-                    Confirm_Password:"",
+                    Address:"",
+                    Gender:"",
 
         }
             this.formChange = this.formChange.bind(this)
@@ -34,9 +34,8 @@ class Register extends Component {
             Lastname:this.state.Lastname,
             Email: this.state.Email,
             Address:this.state.Address,
-            Gender: this.state.Gender
+
         }
-        console.log(data);
         this.props.addCustomer(data)
      
       console.log("Data inserted")
@@ -96,21 +95,13 @@ class Register extends Component {
                         type="text"
                         className={('form-control form-control-lg')}
                         placeholder="Address"
-                        name="Password"
+                        name="Address"
                         value={this.state.Address}
                         onChange={this.formChange}
                       />
                 
                     </div>
-                    <div className="form-group">
-                      <select name ="Gender"
-                              className={('form-control form-control-lg')}
-                              
-                              onChange={this.formChange}>
-                      <option value="this.state.Gender">Male</option>
-                      <option value="this.state.Gender">Female</option>
-                      </select>     
-                    </div>
+                   
                     
 
                     <input type="submit" className="btn btn-info btn-block mt-4" value="Add Customer"/>

@@ -12,7 +12,7 @@ class ViewProduct extends Component {
 
     render() {
 
-        console.log(this.props.prods, "this is the details of product");
+       
         const productItems = this.props.prods.map(view => (
             <tr key = {view._id}>
                 <td>{view.Name}</td>

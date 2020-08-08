@@ -11,14 +11,18 @@ class ViewCustomer extends Component {
     }
 
 
+
     render() {
+
+
+
         const customerItems = this.props.posts.map(view =>(
                         <tr key= {view._id}>
                         <td>{view.Firstname}</td>
                         <td>{view.Lastname}</td>
                         <td>{view.Email}</td>
                         <td>
-                        <Link className = "btn btn-primary mr-2" to={`/api/edit/${view.id}`}>Edit</Link>
+                        <Link className = "btn btn-primary mr-2"  to={`/api/edit/${view._id}`}>Edit</Link>
                         <Link className = "btn btn-primary mr-2">Delete</Link>
                            
                         </td>

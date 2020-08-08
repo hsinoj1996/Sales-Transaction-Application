@@ -8,12 +8,12 @@ class EditCustomer extends Component {
     constructor(){
         super()
         this.state = {
-                    id:"",
+                  
                     Firstname:"",
                     Lastname:"",
                     Email:"",
-                    Password:"",
-                    Confirm_Password:"",
+                    Address:"",
+                    
 
         }
             this.formChange = this.formChange.bind(this)
@@ -23,13 +23,9 @@ class EditCustomer extends Component {
 
     componentWillMount(){
       this.props.editCustomer();
-      this.getCustomerByID();
     }
 
-    getCustomerByID(){
-    let eid = this.props.match.params.id;
-      console.log("the id is", eid);
-    }
+ 
 
     formChange(event){
         const {name, value} = event.target
@@ -43,8 +39,8 @@ class EditCustomer extends Component {
             Firstname: this.state.Firstname,
             Lastname:this.state.Lastname,
             Email: this.state.Email,
-            Password:this.state.Password,
-            Confirm_Password: this.state.Confirm_Password
+            Address:this.state.Address,
+            
         }
         console.log(data);
         this.props.editCustomer(data)
@@ -104,26 +100,16 @@ class EditCustomer extends Component {
                     </div>
                     <div className="form-group">
                       <input
-                        type="password"
+                        type="text"
                         className={('form-control form-control-lg')}
-                        placeholder="Password"
-                        name="Password"
-                        value={this.state.Password}
+                        placeholder="Address"
+                        name="Address"
+                        value={this.state.Address}
                         onChange={this.formChange}
                       />
                 
                     </div>
-                    <div className="form-group">
-                      <input
-                        type="password"
-                        className={('form-control form-control-lg')}
-                        placeholder="Confirm Password"
-                        name="Confirm_Password"
-                        value={this.state.Confirm_Password}
-                        onChange={this.formChange}
-                      />
-                    </div>
-                    
+                 
 
                     <input type="submit" className="btn btn-info btn-block mt-4" value="Update Customer"/>
                   </form>

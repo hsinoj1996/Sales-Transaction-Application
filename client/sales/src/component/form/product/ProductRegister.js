@@ -12,6 +12,7 @@ class ProductRegister extends Component {
                     Name:"",
                     Price:"",
                     Description:"",
+                    showName: false
                    
 
         }
@@ -38,10 +39,11 @@ class ProductRegister extends Component {
             Description: this.state.Description,
            
         }
+      
        
         this.props.addProduct(data)
      
-      console.log("Data inserted")
+      console.log("Data inserted", "data")
     }
 
     render() {
@@ -96,10 +98,12 @@ class ProductRegister extends Component {
 
                     <div className="form-group">
                     
+                    
+                    <Link to = "/api/product/view"><button>Add</button></Link>
                     <input type="submit" 
                                 className="btn btn-info btn-block mt-4" 
                                 value="Add Product"
-                              />
+                                />
                     
                     </div>
                    

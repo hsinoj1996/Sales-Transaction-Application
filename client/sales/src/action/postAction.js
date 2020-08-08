@@ -43,12 +43,13 @@ export const getCustomer = () => dispatch =>{
 export const editCustomer = (id) => dispatch =>{
 
     axios
-        .get(`/api/edit/${id}`)
+        .put(`/api/edit/${id}`)
         .then((editCustomer) =>{
             if(editCustomer){
                 dispatch({
                     type: Edit_Customer,
-                    payload: editCustomer
+                    payload: editCustomer,
+                    id
                 })
             }
         })
